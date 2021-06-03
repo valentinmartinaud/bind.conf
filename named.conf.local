@@ -1,0 +1,18 @@
+//
+// Do any local configuration here
+//
+
+
+dlz "mysqldyn" {
+	database "dlopen /opt/bind9/lib/dlz_mysqldyn_mod.so BindDB localhost cgr DQ9q-HvC";
+	search no;
+};
+
+
+zone "cgrstage.fr" {
+	type master;
+	dlz mysqldyn; 
+	allow-update {
+		 key cgrstage.fr;
+	};
+};
